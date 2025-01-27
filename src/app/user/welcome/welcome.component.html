@@ -1,1 +1,16 @@
-<p>welcome works!</p>
+<div class="welcome-card">
+  <h2>Bienvenido, {{ user.name }}</h2>
+  <div class="user-info">
+    <p>Email: {{ user.email }}</p>
+  </div>
+  <div class="accounts-section">
+    <h3>Cuentas Bancarias</h3>
+    <div class="accounts-list">
+      <div *ngFor="let account of accounts" class="account-item">
+        <p>Número de Cuenta: {{ account.accountNumber }}</p>
+        <p>Saldo: {{ account.balance }}</p>
+      </div>
+    </div>
+  </div>
+  <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
+</div>
