@@ -1,0 +1,81 @@
+
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-small {
+  grid-column: span 2;
+}
+
+.card-actions {
+  grid-column: span 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-large {
+  grid-column: span 4;
+  height: auto;
+}
+
+.card-large .list {
+  width: 100%;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.actions-section {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions-section button {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.actions-section button:hover {
+  background: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr; 
+  }
+
+  .card-small {
+    grid-column: span 1;
+  }
+
+  .card-actions,
+  .card-large {
+    grid-column: span 1; 
+  }
+}

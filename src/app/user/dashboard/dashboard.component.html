@@ -1,0 +1,38 @@
+<div class="dashboard">
+  <div class="card card-small">
+    <h2>Bienvenido, {{ user.name }}</h2>
+    <p>Email: {{ user.email }}</p>
+  </div>
+
+  <div class="card card-small">
+    <h3>Saldo Actual</h3>
+    <p *ngIf="currentGlobalBalance !== null">{{ currentGlobalBalance | currency: 'USD' }}</p>
+  </div>
+
+  <div class="card card-actions actions-section">
+    <button (click)="logout()">Cerrar Sesión</button>
+    <button>Depositar</button>
+    <button>Retirar</button>
+  </div>
+
+  <div class="card card-large">
+    <h3>Cuentas Bancarias</h3>
+    <div class="list">
+      <div *ngFor="let account of accounts">
+        <p>Número de Cuenta: {{ account.accountNumber }}</p>
+        <p>Saldo: {{ account.balance }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-large">
+    <h3>Historial de Transacciones</h3>
+    <div class="list">
+      <div *ngFor="let transaction of transactions">
+        <p>Fecha: {{ transaction.date | date }}</p>
+        <p>Tipo: {{ transaction.type | uppercase }}</p>
+        <p>Monto: {{ transaction.amount | currency: 'USD' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

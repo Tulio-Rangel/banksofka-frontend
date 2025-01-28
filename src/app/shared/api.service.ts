@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthResponse } from '../auth/models/auth-response.model';
-import { User } from '../auth/models/user.model';
+import { AuthResponse } from './models/auth-response.model';
+import { User } from './models/user.model';
+import { Transaction } from './models/transaction.model';
+import { Account } from './models/account.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +25,18 @@ export class ApiService {
     return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, { email, password });
   }
 
-  register(user: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users`, user);
+  register(user: User): Observable<Account> {
+    return this.http.post<Account>(`${this.apiUrl}/users`, user);
   }
 
-  getUserAccounts(userId: number): Observable<any> {
+  getUserAccounts(userId: number): Observable<Account[]> {
     const headers = this.getHeaders();
-    return this.http.get(`${this.apiUrl}/users/${userId}/accounts`, { headers });
+    return this.http.get<Account[]>(`${this.apiUrl}/users/${userId}/accounts`, { headers });
   }
+
+  getTransactionsHistory(accountId: string): Observable<Transaction[]> {
+    const headers = this.getHeaders();
+    return this.http.get<Transaction[]>(`${this.apiUrl}/accounts/${accountId}/transactions`, { headers });
+  }
+    
 }

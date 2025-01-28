@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/api.service';
-import { User } from '../models/user.model';
+import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-register',
