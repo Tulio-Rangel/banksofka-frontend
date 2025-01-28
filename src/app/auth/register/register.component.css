@@ -1,68 +1,57 @@
-.login-card {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.title, .btn-custom {
+  font-family: 'Sura', sans-serif;
 }
 
-h2 {
+/* Título fuera del contenedor */
+.title {
+  font-size: 2rem;
+  color: #626277;
+  margin-bottom: 0.3rem;
+}
+
+.textoSystemBank {
+  font-family: SuraSansNegrita, sans-serif;
+  font-size: 34px;
+  line-height: 38px;
   text-align: center;
-  color: #333;
-  margin-bottom: 30px;
+  color: #0033A0;
+  margin-bottom: 10px;
 }
 
-.form-group {
-  margin-bottom: 20px;
+.form-label{
+  font-family: SuraSansRegular, sans-serif;
+  color: #626277;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #666;
+  /* Contenedor del register */
+  .register-container {
+    width: 100%;
+    max-width: 350px;
+  }
+
+.login-link{
+  color: #626277;
 }
 
-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
-input:focus {
-  outline: none;
-  border-color: #667eea;
-}
-
-.login-button {
-  width: 100%;
-  padding: 12px;
-  background: #667eea;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.login-button:hover {
-  background: #764ba2;
-}
-
-.register-link {
-  text-align: center;
-  margin-top: 20px;
-  color: #666;
-}
-
-.register-link a {
-  color: #667eea;
+  /* Enlace de registro */
+.login-link a {
+  color: #0056b3;
   text-decoration: none;
-  font-weight: 500;
 }
 
-.register-link a:hover {
-  color: #764ba2;
+.login-link a:hover {
   text-decoration: underline;
 }
+
+.btn-custom {
+  background-color: #e3e829 !important;
+  color: #0033a0 !important;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #d6dc24 !important;
+  color: #001f6b !important;
+}
+
