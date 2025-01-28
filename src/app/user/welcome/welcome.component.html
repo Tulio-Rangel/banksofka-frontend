@@ -1,16 +1,55 @@
-<div class="welcome-card">
-  <h2>Bienvenido, {{ user.name }}</h2>
-  <div class="user-info">
-    <p>Email: {{ user.email }}</p>
-  </div>
-  <div class="accounts-section">
-    <h3>Cuentas Bancarias</h3>
-    <div class="accounts-list">
-      <div *ngFor="let account of accounts" class="account-item">
-        <p>Número de Cuenta: {{ account.accountNumber }}</p>
-        <p>Saldo: {{ account.balance }}</p>
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block bg-white sidebar">
+      <div class="position-sticky p-3">
+          <h2 class="text-center text-custom mb-4">SofkaBank</h2>
+          <ul class="nav flex-column">
+              <li class="nav-item">
+                  <a class="nav-link inicio" routerLink="/welcome">
+                      <i class="bi bi-house-door-fill icono inicio-icono"></i> Inicio
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">
+                      <i class="bi bi-currency-dollar icono "></i> Historial de transacciones
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">
+                      <i class="bi bi-cash-coin icono"></i> Depósito
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">
+                      <i class="bi bi-database-down icono"></i> Retiro
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" (click)="logout()">
+                      <i class="bi bi-box-arrow-right icono"></i> Salir
+                  </a>
+              </li>
+          </ul>
       </div>
+  </nav>
+
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex flex-column justify-content-between pt-3 pb-2 mb-3 border-bottom">
+      <h1> ¡Hola, {{ user.name }}!</h1>
+      <p>Email: {{ user.email }}</p>
     </div>
+
+    <!-- Tarjeta de saldo -->
+    <div class="card shadow-sm p-4 mb-4">
+        <h3 class="text-custom"><i class="bi bi-wallet2"></i> Saldo Disponible</h3>
+        <div *ngFor="let account of accounts" class="account-item">
+          <p>Número de Cuenta: {{ account.accountNumber }}</p>
+          <p class="p-custom">{{ account.balance | currency: 'USD'}}</p>
+        </div>
+    </div>
+</main>
+
+
   </div>
-  <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
 </div>
+
