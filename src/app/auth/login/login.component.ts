@@ -18,7 +18,7 @@ export class LoginComponent {
   onSubmit(): void {
     this.apiService.login(this.email, this.password).subscribe(
       (response: AuthResponse) => {
-        localStorage.setItem('token', response.jwt);
+        localStorage.setItem('token', response.token);
         localStorage.setItem('user', JSON.stringify(response));
         this.router.navigate(['/welcome']);
       },

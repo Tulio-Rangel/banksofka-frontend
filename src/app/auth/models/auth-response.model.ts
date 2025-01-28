@@ -1,5 +1,5 @@
 export interface AuthResponse {
-  jwt: string;
+  token: string;
   name: string;
   email: string;
   id: number;

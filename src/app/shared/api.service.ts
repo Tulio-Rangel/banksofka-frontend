@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthResponse } from '../auth/models/auth-response.model';
 import { User } from '../auth/models/user.model';
@@ -12,6 +12,13 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
   login(email: string, password: string): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, { email, password });
   }
@@ -21,6 +28,7 @@ export class ApiService {
   }
 
   getUserAccounts(userId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/users/${userId}/accounts`);
+    const headers = this.getHeaders();
+    return this.http.get(`${this.apiUrl}/users/${userId}/accounts`, { headers });
   }
 }
