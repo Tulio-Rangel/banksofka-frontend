@@ -10,7 +10,17 @@
         <p>Número de Cuenta: {{ account.accountNumber }}</p>
         <p>Saldo: {{ account.balance }}</p>
       </div>
+      <div *ngFor="let transaction of transactions">
+        <p>User ID: {{ transaction.userId }}</p>
+        <p>Initial Balance: {{ transaction.initialBalance }}</p>
+        <p>Amount: {{ transaction.amount }}</p>
+        <p>Final Balance: {{ transaction.finalBalance }}</p>
+        <p>Transaction Type: {{ transaction.transactionType }}</p>
+        <p>Date: {{ transaction.date }}</p>
+        <hr>
+      </div>
     </div>
   </div>
+
   <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
 </div>

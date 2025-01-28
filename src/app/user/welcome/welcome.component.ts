@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuditTransaction } from 'src/app/auth/models/audit-transaction';
 import { ApiService } from 'src/app/shared/api.service';
 
 @Component({
@@ -9,8 +11,11 @@ import { ApiService } from 'src/app/shared/api.service';
 export class WelcomeComponent implements OnInit {
   user: any;
   accounts: any[] = [];
+  transactions: AuditTransaction[] = [];
+  private transactionSubscription!: Subscription;
 
-  constructor(private apiService: ApiService) { }
+
+  constructor(private apiService: ApiService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -22,6 +27,16 @@ export class WelcomeComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching accounts', error);
+      }
+    );
+
+    this.transactionSubscription = this.apiService.getTransactionStream().subscribe(
+      (transaction: AuditTransaction) => {
+        this.transactions.unshift(transaction);
+        this.cdr.detectChanges();
+      },
+      (error) => {
+        console.error('Error receiving transaction stream:', error.message || error);
       }
     );
   }
