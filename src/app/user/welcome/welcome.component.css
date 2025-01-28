@@ -1,53 +1,99 @@
-.welcome-card {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
+@import "node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
 }
 
-h2 {
-  text-align: center;
-  color: #333;
-  margin-bottom: 30px;
+
+.h2 {
+  color: #626277;
 }
 
-.user-info {
-  margin: 20px 0;
+/* Sidebar */
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 8px 0 10px -5px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+}
+
+/* Links del menú con iconos */
+.nav-link {
   padding: 15px;
-  background: #f8f9fa;
-  border-radius: 5px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 8px;
 }
 
-.accounts-section {
-  margin: 20px 0;
-  text-align: left;
+.nav-link:hover {
+  background: rgba(0, 51, 160, 0.1);
+  color: #0033a0;
 }
 
-.accounts-list {
-  margin-top: 15px;
+/* Tarjeta */
+.card {
+  border-radius: 12px;
 }
 
-.account-item {
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.logout-button {
-  width: 100%;
-  padding: 12px;
-  background: #667eea;
+/* Botón */
+.btn-primary {
+  background-color: #0033a0;
   border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  margin-top: 20px;
 }
 
-.logout-button:hover {
-  background: #764ba2;
+.btn-primary:hover {
+  background-color: #002080;
+}
+
+/* Cambiar el color de los textos en la barra lateral */
+.sidebar .nav-link {
+  color: #626277; /* Cambiar el color del texto */
+  font-size: 1.2rem; /* Cambiar el tamaño del texto */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.sidebar .inicio {
+  color: #0033a0;
+  background-color: rgba(0, 51, 160, 0.1);
+}
+
+.sidebar .nav-link .inicio-icono {
+  font-size: 2rem; /* Aumentar el tamaño de los íconos */
+  color: #0033a0; /* Mismo color que los textos */
+}
+
+
+/* Cambiar el color al pasar el mouse */
+.sidebar .nav-link:hover {
+  background-color: rgba(0, 51, 160, 0.1); /* Fondo al hacer hover */
+  color: #0033a0; /* Cambiar el color del texto al hacer hover */
+}
+
+/* Cambiar el tamaño y color de los íconos */
+.sidebar .icono {
+  font-size: 2rem; /* Aumentar el tamaño de los íconos */
+  color: #626277; /* Mismo color que los textos */
+}
+
+/* Cambiar color de los íconos al pasar el mouse */
+.sidebar .nav-link:hover .icono {
+  color: #0033a0; /* Cambiar el color de los íconos al hacer hover */
+}
+
+.text-custom {
+  color: #0033a0;
+}
+
+.p-custom {
+  color: #626277;
+  font-weight: bold;
+  font-size: 1.5em;
 }
