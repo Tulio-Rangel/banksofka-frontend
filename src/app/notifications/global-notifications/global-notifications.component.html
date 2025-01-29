@@ -1,0 +1,11 @@
+<div class="notification-container">
+    <div *ngFor="let transaction of transactions" class="notification">
+      <p>🛠 Nueva Transacción</p>
+      <p>ID: {{ transaction.id }}</p>
+      <p>Fecha: {{ transaction.date | date }}</p>
+      <p>Tipo: {{ transaction.transactionType | lowercase }}</p>
+      <p>Monto: {{ transaction.amount | currency }}</p>
+      <p>Monto inicial: {{ transaction.initialBalance | currency }}</p>
+      <p>Monto final: {{ transaction.finalBalance | currency }}</p>
+    </div>
+  </div>

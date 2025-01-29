@@ -7,12 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
-import { LoginComponent } from './auth/login/login.component';
+import { NotificationsModule } from './notifications/notifications.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +20,8 @@ import { LoginComponent } from './auth/login/login.component';
     FormsModule,
     HttpClientModule,
     UserModule,
-    AuthModule
+    AuthModule,
+    NotificationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
