@@ -37,8 +37,10 @@
 
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
 
-      <button type="submit" class="btn btn-custom w-100" [disabled]="loginForm.invalid">
-        <strong>Ingresar</strong>
+      <button type="submit" class="btn btn-custom w-100" [disabled]="loginForm.invalid || isLoading">
+        <span *ngIf="!isLoading"><strong>Ingresar</strong></span>
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        <span *ngIf="isLoading" class="ms-2">Cargando...</span>
       </button>
       <p class="register-link text-center mt-3">¿No tienes una cuenta? <a routerLink="/register">Regístrate aquí</a></p>
     </form>
