@@ -37,4 +37,15 @@ export class ApiService {
     const headers = this.getHeaders();
     return this.http.get<Transaction[]>(`${this.apiUrl}/accounts/${accountId}/transactions`, { headers });
   }
+
+  createDeposit(accountId: string, amount:number) : Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.post(`${this.apiUrl}/accounts/${accountId}/deposit`, amount, {headers});
+  }
+
+  createWithdrawal(accountId: string) : Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.post(`${this.apiUrl}/accounts/${accountId}/withdrawal`, {headers});
+  }
+
 }

@@ -5,14 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { DepositComponent } from './deposit/deposit.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DepositComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import { NotificationsModule } from './notifications/notifications.module';
     HttpClientModule,
     UserModule,
     AuthModule,
-    NotificationsModule
+    NotificationsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

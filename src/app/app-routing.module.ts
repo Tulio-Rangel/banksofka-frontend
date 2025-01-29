@@ -6,17 +6,19 @@ import { WelcomeComponent } from './user/welcome/welcome.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { HistoryComponent } from './user/history/history.component';
 import { MainLayoutComponent } from './user/main-layout/main-layout.component';
+import { DepositComponent } from './deposit/deposit.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { 
-    path: '', 
+  {
+    path: '',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard], 
+    canActivate: [AuthGuard],
     children: [
       { path: 'welcome', component: WelcomeComponent },
-      { path: 'history', component: HistoryComponent }
+      { path: 'history', component: HistoryComponent },
+      { path: 'deposit', component: DepositComponent}
     ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },

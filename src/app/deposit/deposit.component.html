@@ -1,0 +1,15 @@
+<p>deposit works!</p>
+
+<form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="amount">
+      Monto a depositar
+    </label>
+    <input id="amount" type="number" formControlName="amount" required>
+    <div *ngIf="depositForm.get('amount')?.invalid && depositForm.get('amount')?.touched">
+      <small *ngIf="depositForm.get('amount')?.errors?.['required']">El monto es obligatorio.</small>
+      <small *ngIf="depositForm.get('amount')?.errors?.['min']">El monto debe ser mayor a 0.</small>
+    </div>
+  </div>
+  <button class="button" type="submit" [disabled]="depositForm.invalid">Depositar</button>
+</form>
