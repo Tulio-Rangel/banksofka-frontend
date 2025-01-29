@@ -7,6 +7,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { HistoryComponent } from './user/history/history.component';
 import { MainLayoutComponent } from './user/main-layout/main-layout.component';
 import { DepositComponent } from './deposit/deposit.component';
+import { WithdrawalComponent } from './withdrawal/withdrawal.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
     children: [
       { path: 'welcome', component: WelcomeComponent },
       { path: 'history', component: HistoryComponent },
-      { path: 'deposit', component: DepositComponent}
+      { path: 'deposit', component: DepositComponent},
+      { path: 'withdrawal', component: WithdrawalComponent},
     ]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },

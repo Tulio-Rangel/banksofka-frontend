@@ -10,12 +10,14 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { DepositComponent } from './deposit/deposit.component';
+import { WithdrawalComponent } from './withdrawal/withdrawal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DepositComponent
+    DepositComponent,
+    WithdrawalComponent
   ],
   imports: [
     BrowserModule,
