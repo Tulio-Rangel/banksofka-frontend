@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 import { of, throwError } from 'rxjs';
 import { WelcomeComponent } from 'src/app/user/welcome/welcome.component';
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let apiService: ApiService;
