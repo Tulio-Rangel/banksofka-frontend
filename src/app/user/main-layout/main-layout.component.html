@@ -5,23 +5,23 @@
             <div class="position-sticky p-3">
                 <h2 class="text-center text-custom mb-4">SofkaBank</h2>
                 <ul class="nav flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                         <a class="nav-link" routerLink="/welcome">
                             <i class="bi bi-house-door-fill icono"></i> Inicio
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                         <a class="nav-link" routerLink="/history">
                             <i class="bi bi-currency-dollar icono"></i> Historial de transacciones
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                         <a class="nav-link" routerLink="/deposit">
                             <i class="bi bi-cash-coin icono"></i> Depósito
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/withdraw">
+                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                        <a class="nav-link" routerLink="/withdrawal">
                             <i class="bi bi-database-down icono"></i> Retiro
                         </a>
                     </li>

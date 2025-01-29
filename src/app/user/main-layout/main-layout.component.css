@@ -86,3 +86,13 @@ h1, h2, h3 {
 .text-custom {
   color: #0033a0;
 }
+
+.active .nav-link {
+  background-color: rgba(0, 51, 160, 0.1);
+  color: #0033a0;
+}
+
+.active .nav-link .icono {
+  font-size: 2rem; /* Aumentar el tamaño de los íconos */
+  color: #0033a0;
+}
