@@ -4,23 +4,22 @@ import { ApiService } from '../shared/api.service';
 import { TransactionStreamService } from '../notifications/transaction-stream.service';
 
 @Component({
-  selector: 'app-deposit',
-  templateUrl: './deposit.component.html',
-  styleUrls: ['./deposit.component.css']
+  selector: 'app-withdrawal',
+  templateUrl: './withdrawal.component.html',
+  styleUrls: ['./withdrawal.component.css']
 })
+export class WithdrawalComponent implements OnInit{
 
-export class DepositComponent implements OnInit{
-  depositForm: FormGroup;
+  withdrawalForm: FormGroup;
   user: any;
   accounts: any[] = [];
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private transactionStreamService: TransactionStreamService) {
 
-    this.depositForm = this.formBuilder.group({
-      amount: [null, [Validators.required, Validators.min(1)]],
-    });
-  }
-
+      this.withdrawalForm = this.formBuilder.group({
+        amount: [null, [Validators.required, Validators.min(1)]],
+      });
+    }
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     this.user = user;
@@ -28,25 +27,25 @@ export class DepositComponent implements OnInit{
     this.apiService.getUserAccounts(this.user.id).subscribe({
       next: (response) => this.accounts = response,
       error: (error) => console.error('Error fetching accounts', error)
-    });
+      });
   }
 
   onSubmit(): void {
-    if(this.depositForm.valid){
-      const body = this.depositForm.value;
-      console.warn('Deposito hecho', this.depositForm.value);
-      this.apiService.createDeposit(this.accounts[0].id, this.depositForm.value).subscribe({
+    if (this.withdrawalForm.valid) {
+      const body = this.withdrawalForm.value
+      console.warn('Retiro hecho', this.withdrawalForm.value);
+      this.apiService.createWithdrawal(this.accounts[0].id, this.withdrawalForm.value).subscribe({
         next: (response) => {
-          console.log('Depósito exitoso:', response);
-          this.depositForm.reset();
+          console.log('Retiro exitoso:', response);
+          this.withdrawalForm.reset();
         },
         error: (error) => {
-          console.error('Error al depositar:', error);
-          console.warn('Error al procesar depósito');
+          console.error('Error al retirar:', error);
+          console.warn('Error al procesar retiro');
         }
       });
     }
   }
+
+
 }
-
-
