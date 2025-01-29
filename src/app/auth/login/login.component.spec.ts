@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -50,24 +50,27 @@ fdescribe('LoginComponent', () => {
     expect(component.errorMessage).toBe('Por favor, ingrese un correo electrónico válido');
   });
 
-  it('should call apiService.login() when form is valid', () => {
+  it('should call apiService.login() when form is valid', fakeAsync(() => {
     const loginForm = fixture.debugElement.query(By.css('form')).injector.get(NgForm);
     component.email = 'test@example.com';
     component.password = 'validpassword';
     spyOn(apiService, 'login').and.callFake(() => of({ token: 'valid-token', name: 'test-user', email: 'test@example.com', id: 123 }));
     component.onSubmit(loginForm);
+    tick(2000);
+    fixture.detectChanges();
     expect(apiService.login).toHaveBeenCalledWith('test@example.com', 'validpassword');
     expect(component.errorMessage).toBe('');
-  });
+  }));
 
-  it('should display error message when login fails', () => {
+  it('should display error message when login fails', fakeAsync(() => {
     const loginForm = fixture.debugElement.query(By.css('form')).injector.get(NgForm);
     component.email = 'test@example.com';
     component.password = 'wrongpassword';
     spyOn(apiService, 'login').and.callFake(() => throwError({ error: 'Invalid credentials' }));
     component.onSubmit(loginForm);
+    tick(2000);
     fixture.detectChanges();
     expect(component.errorMessage).toBe('Credenciales inválidas. Por favor, verifique sus datos');
-  });
+  }));
 
 });
