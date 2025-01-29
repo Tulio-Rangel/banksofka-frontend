@@ -2,22 +2,45 @@
   <h4 class="title text-center">Bienvenido a tu </h4>
   <span class="textoSystemBank"><strong>Sistema bancario</strong></span>
   <div class="login-container p-4 shadow rounded bg-white">
-      <form (ngSubmit)="onSubmit()" class="login-form">
-
-        <div class="mb-3">
-          <label for="email" class="form-label">Correo electrónico</label>
-          <input type="email" id="email" [(ngModel)]="email" name="email" class="form-control" required>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="login-form">
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="email" 
+               id="email" 
+               [(ngModel)]="email" 
+               name="email" 
+               class="form-control" 
+               required
+               email
+               #emailInput="ngModel">
+        <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger small">
+          <div *ngIf="emailInput.errors?.['required']">El correo es requerido</div>
+          <div *ngIf="emailInput.errors?.['email']">Ingrese un correo válido</div>
         </div>
+      </div>
 
-        <div class="mb-3">
-          <label for="password" class="form-label">Contraseña</label>
-          <input type="password" id="password" [(ngModel)]="password" name="password" class="form-control" required>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="password" 
+               id="password" 
+               [(ngModel)]="password" 
+               name="password" 
+               class="form-control" 
+               required
+               minlength="6"
+               #passwordInput="ngModel">
+        <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger small">
+          <div *ngIf="passwordInput.errors?.['required']">La contraseña es requerida</div>
+          <div *ngIf="passwordInput.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</div>
         </div>
+      </div>
 
-        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
 
-        <button type="submit" class="btn btn-custom w-100"><strong>Ingresar</strong></button>
-        <p class="register-link text-center mt-3">¿No tienes una cuenta? <a routerLink="/register">Regístrate aquí</a></p>
-      </form>
-    </div>
+      <button type="submit" class="btn btn-custom w-100" [disabled]="loginForm.invalid">
+        <strong>Ingresar</strong>
+      </button>
+      <p class="register-link text-center mt-3">¿No tienes una cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+    </form>
+  </div>
 </div>

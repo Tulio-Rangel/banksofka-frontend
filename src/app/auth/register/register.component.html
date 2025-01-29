@@ -2,26 +2,61 @@
   <h4 class="title text-center">Regístrate en tu </h4>
   <span class="textoSystemBank"><strong>Sistema bancario</strong></span>
   <div class="register-container p-4 shadow rounded bg-white">
-    <form (ngSubmit)="onSubmit()">
-
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
       <div class="mb-3">
         <label for="name" class="form-label">Nombre completo</label>
-        <input type="text" id="name" [(ngModel)]="user.name" name="name" class="form-control" required>
+        <input type="text" 
+               id="name" 
+               [(ngModel)]="user.name" 
+               name="name" 
+               class="form-control" 
+               required 
+               minlength="3"
+               #name="ngModel">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger small">
+          <div *ngIf="name.errors?.['required']">El nombre es requerido</div>
+          <div *ngIf="name.errors?.['minlength']">El nombre debe tener al menos 3 caracteres</div>
+        </div>
       </div>
 
       <div class="mb-3">
         <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" id="email" [(ngModel)]="user.email" name="email" class="form-control" required>
+        <input type="email" 
+               id="email" 
+               [(ngModel)]="user.email" 
+               name="email" 
+               class="form-control" 
+               required
+               email
+               #email="ngModel">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger small">
+          <div *ngIf="email.errors?.['required']">El correo es requerido</div>
+          <div *ngIf="email.errors?.['email']">Ingrese un correo válido</div>
+        </div>
       </div>
 
       <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" id="password" [(ngModel)]="user.password" name="password" minlength="6" class="form-control" required>
+        <input type="password" 
+               id="password" 
+               [(ngModel)]="user.password" 
+               name="password" 
+               class="form-control" 
+               required 
+               minlength="6"
+               #password="ngModel">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger small">
+          <div *ngIf="password.errors?.['required']">La contraseña es requerida</div>
+          <div *ngIf="password.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</div>
+        </div>
       </div>
 
-      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-      <div *ngIf="successMessage" class="success-message show">{{ successMessage }}</div>
-      <button type="submit" class="btn btn-custom w-100">Registrarse</button>
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+      <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+      
+      <button type="submit" class="btn btn-custom w-100" [disabled]="registerForm.invalid">
+        Registrarse
+      </button>
       <p class="register-link text-center mt-3">¿Ya tienes una cuenta? <a routerLink="/login">Ingresa aquí</a></p>
     </form>
   </div>
