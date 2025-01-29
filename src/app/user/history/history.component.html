@@ -1,1 +1,25 @@
-<p>history works!</p>
+<div class="d-flex flex-column justify-content-between pt-3 pb-2 mb-3 border-bottom">
+    <h1> Historial de transacciones</h1>
+</div>
+
+<!-- Tarjeta de transacciones -->
+<div class="card shadow-sm p-4 mb-4">
+    <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Fecha</th>
+            <th>Monto</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactions">
+            <td>{{ transaction.id }}</td>
+            <td>{{ transaction.date | date }}</td>
+            <td>{{ transaction.amount | currency: 'USD' }}</td>
+            <td>{{ transaction.type }}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

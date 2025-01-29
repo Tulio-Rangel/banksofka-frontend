@@ -11,7 +11,6 @@ export class WelcomeComponent implements OnInit {
   user: any;
   accounts: any[] = [];
   currentBalance: number = 0;
-  transactions: any[] = [];
 
   constructor(private apiService: ApiService, private transactionStreamService: TransactionStreamService) { }
 
@@ -27,18 +26,10 @@ export class WelcomeComponent implements OnInit {
     this.transactionStreamService.getTransactionStream().subscribe({
       next: (transaction) => {
         if (!transaction) return;
-        
-        this.transactions.unshift(transaction);
         this.currentBalance = transaction.finalBalance;
       },
       error: (error) => console.error('Error en el stream:', error)
     });
 
-  }
-
-  logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.location.href = '/login';
   }
 }
