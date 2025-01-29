@@ -1,27 +1,49 @@
-# BanksofkaFrontend
+# Banksofka
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+Banksofka es una aplicación bancaria moderna que permite a los usuarios gestionar sus cuentas bancarias.
 
-## Development server
+## Guía de Usuario
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Funcionalidades Principales
 
-## Code scaffolding
+- **Autenticación Segura**: Registro e inicio de sesión de usuarios con validación de datos
+- **Gestión de Cuentas**: Visualización de saldos y detalles de cuenta
+- **Operaciones Bancarias**:
+- Depósitos
+- Retiros
+- Consulta de historial de transacciones
+- **Notificaciones**: Alertas sobre operaciones realizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Cómo Usar la Aplicación
 
-## Build
+1. **Inicio de Sesión**:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Accede a través de la URL localhost:4200
+- Ingresa tus credenciales o regístrate si eres nuevo usuario
 
-## Running unit tests
+2. **Operaciones Bancarias**:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Selecciona el tipo de operación desde el menú principal
+- Ingresa el monto para completar la transacción
 
-## Running end-to-end tests
+3. **Consulta de Historial**:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Accede a la sección "Historial"
 
-## Further help
+### Requisitos para Usuarios
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Conexión a Internet estable
+- Datos de registro válidos
+
+### Tecnologías Utilizadas
+
+- Angular 16
+- Bootstrap
+- TypeScript
+- RxJS
+
+### Arquitectura del Proyecto
+
+- **Patrón de Diseño**: Arquitectura basada en componentes siguiendo los principios de Angular
+- **Estado**: Gestión de estado mediante servicios y RxJS
+- **API**: Comunicación RESTful con backend mediante HttpClient
