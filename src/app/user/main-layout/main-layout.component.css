@@ -1,0 +1,88 @@
+@import "node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.h2 {
+  color: #626277;
+}
+
+/* Sidebar */
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 8px 0 10px -5px rgba(0, 0, 0, 0.3);
+  background-color: #ffffff;
+}
+
+/* Links del menú con iconos */
+.nav-link {
+  padding: 15px;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 8px;
+}
+
+.nav-link:hover {
+  background: rgba(0, 51, 160, 0.1);
+  color: #0033a0;
+}
+
+/* Botón */
+.btn-primary {
+  background-color: #0033a0;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #002080;
+}
+
+/* Cambiar el color de los textos en la barra lateral */
+.sidebar .nav-link {
+  color: #626277; /* Cambiar el color del texto */
+  font-size: 1.2rem; /* Cambiar el tamaño del texto */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.sidebar .inicio {
+  color: #0033a0;
+  background-color: rgba(0, 51, 160, 0.1);
+}
+
+.sidebar .nav-link .inicio-icono {
+  font-size: 2rem; /* Aumentar el tamaño de los íconos */
+  color: #0033a0; /* Mismo color que los textos */
+}
+
+
+/* Cambiar el color al pasar el mouse */
+.sidebar .nav-link:hover {
+  background-color: rgba(0, 51, 160, 0.1); /* Fondo al hacer hover */
+  color: #0033a0; /* Cambiar el color del texto al hacer hover */
+}
+
+/* Cambiar el tamaño y color de los íconos */
+.sidebar .icono {
+  font-size: 2rem; /* Aumentar el tamaño de los íconos */
+  color: #626277; /* Mismo color que los textos */
+}
+
+/* Cambiar color de los íconos al pasar el mouse */
+.sidebar .nav-link:hover .icono {
+  color: #0033a0; /* Cambiar el color de los íconos al hacer hover */
+}
+
+.text-custom {
+  color: #0033a0;
+}

@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/shared/api.service';
 export class WelcomeComponent implements OnInit {
   user: any;
   accounts: any[] = [];
-  transactions: any[] = [];
+  currentBalance: number = 0;
 
   constructor(private apiService: ApiService, private transactionStreamService: TransactionStreamService) { }
 
@@ -18,30 +18,18 @@ export class WelcomeComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     this.user = user;
 
-    this.apiService.getUserAccounts(user.id).subscribe(
-      (response) => {
-        this.accounts = response;
+    this.apiService.getUserAccounts(this.user.id).subscribe({
+      next: (response) => this.accounts = response,
+      error: (error) => console.error('Error fetching accounts', error)
+    });
+
+    this.transactionStreamService.getTransactionStream().subscribe({
+      next: (transaction) => {
+        if (!transaction) return;
+        this.currentBalance = transaction.finalBalance;
       },
-      (error) => {
-        console.error('Error fetching accounts', error);
-      }
-    );
+      error: (error) => console.error('Error en el stream:', error)
+    });
 
-    this.transactionStreamService.getTransactionStream().subscribe(
-      (transaction) => {
-        this.transactions.unshift(transaction);
-
-      },
-      (error) => {
-        console.error('Error en el stream:', error);
-      }
-    );
-
-  }
-
-  logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    window.location.href = '/login';
   }
 }

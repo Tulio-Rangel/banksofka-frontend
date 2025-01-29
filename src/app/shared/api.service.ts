@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthResponse } from '../auth/models/auth-response.model';
-import { User } from '../auth/models/user.model';
+import { AuthResponse } from './models/auth-response.model';
+import { User } from './models/user.model';
+import { Transaction } from './models/transaction.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +31,10 @@ export class ApiService {
   getUserAccounts(userId: number): Observable<any> {
     const headers = this.getHeaders();
     return this.http.get(`${this.apiUrl}/users/${userId}/accounts`, { headers });
+  }
+
+  getTransactionsHistory(accountId: string): Observable<Transaction[]> {
+    const headers = this.getHeaders();
+    return this.http.get<Transaction[]>(`${this.apiUrl}/accounts/${accountId}/transactions`, { headers });
   }
 }
