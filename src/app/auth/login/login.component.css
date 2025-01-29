@@ -60,10 +60,3 @@
   height: 1.2rem;
   border-width: 0.2em;
 }
-
-.btn-custom:disabled {
-  background-color: #cccccc !important;
-  color: #666666 !important;
-  cursor: not-allowed;
-}
-
