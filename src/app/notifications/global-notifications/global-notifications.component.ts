@@ -14,6 +14,7 @@ export class GlobalNotificationsComponent implements OnInit {
   ngOnInit(): void {
     this.transactionStreamService.getTransactionStream().subscribe({
       next: (transaction) => {
+        if (!transaction) return;
         this.transactions.unshift(transaction);
         setTimeout(() => {
           this.transactions.pop();
