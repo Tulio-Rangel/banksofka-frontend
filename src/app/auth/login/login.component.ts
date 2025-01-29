@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/api.service';
 import { AuthResponse } from '../../shared/models/auth-response.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,17 @@ export class LoginComponent {
 
   constructor(private apiService: ApiService, private router: Router) { }
 
-  onSubmit(): void {
+  onSubmit(form: NgForm): void {
+    if (form.invalid) {
+      this.errorMessage = 'Por favor, complete todos los campos correctamente';
+      return;
+    }
+
+    if (!this.validateEmail(this.email)) {
+      this.errorMessage = 'Por favor, ingrese un correo electrónico válido';
+      return;
+    }
+
     this.apiService.login(this.email, this.password).subscribe(
       (response: AuthResponse) => {
         localStorage.setItem('token', response.token);
@@ -23,8 +34,13 @@ export class LoginComponent {
         this.router.navigate(['/welcome']);
       },
       (error) => {
-        this.errorMessage = 'Credenciales inválidas';
+        this.errorMessage = 'Credenciales inválidas. Por favor, verifique sus datos';
       }
     );
+  }
+
+  private validateEmail(email: string): boolean {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
   }
 }
