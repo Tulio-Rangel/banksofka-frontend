@@ -44,7 +44,7 @@
         <h3 class="text-custom"><i class="bi bi-wallet2"></i> Saldo Disponible</h3>
         <div *ngFor="let account of accounts" class="account-item">
           <p>Número de Cuenta: {{ account.accountNumber }}</p>
-          <p class="p-custom">{{ account.balance | currency: 'USD'}}</p>
+          <p class="p-custom">{{ (transactions[0]?.finalBalance ?? 0) | currency: 'USD'}}</p>
         </div>
     </div>
 </main>

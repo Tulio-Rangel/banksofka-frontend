@@ -1,3 +1,4 @@
+import { TransactionStreamService } from './../../notifications/transaction-stream.service';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/api.service';
 
@@ -9,8 +10,9 @@ import { ApiService } from 'src/app/shared/api.service';
 export class WelcomeComponent implements OnInit {
   user: any;
   accounts: any[] = [];
+  transactions: any[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private transactionStreamService: TransactionStreamService) { }
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -24,6 +26,17 @@ export class WelcomeComponent implements OnInit {
         console.error('Error fetching accounts', error);
       }
     );
+
+    this.transactionStreamService.getTransactionStream().subscribe(
+      (transaction) => {
+        this.transactions.unshift(transaction);
+
+      },
+      (error) => {
+        console.error('Error en el stream:', error);
+      }
+    );
+
   }
 
   logout(): void {
