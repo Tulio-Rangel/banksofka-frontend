@@ -20,14 +20,14 @@ describe('TransactionStreamService', () => {
 
   it('should receive and emit transaction updates', (done) => {
     const mockTransaction = { id: 1, amount: 100 };
-  
+
     service.getTransactionStream().subscribe((transaction) => {
       if (transaction) {
         expect(transaction).toEqual(mockTransaction);
         done();
       }
     });
-  
+
     const mockEvent = new MessageEvent('message', { data: JSON.stringify(mockTransaction) });
     (service as any).eventSource.onmessage(mockEvent);
   });
@@ -35,19 +35,19 @@ describe('TransactionStreamService', () => {
   it('should handle SSE errors and close the connection', () => {
     spyOn(console, 'error');
     spyOn((service as any).eventSource, 'close').and.callThrough();
-  
+
     const mockError = new Event('error');
     (service as any).eventSource.onerror(mockError);
-  
+
     expect(console.error).toHaveBeenCalledWith('Error en SSE:', mockError);
     expect((service as any).eventSource.close).toHaveBeenCalled();
   });
 
   it('should share the latest transaction with new subscribers', (done) => {
     const mockTransaction = { id: 2, amount: 200 };
-  
+
     (service as any).transactionSubject.next(mockTransaction);
-  
+
     service.getTransactionStream().subscribe((transaction) => {
       expect(transaction).toEqual(mockTransaction);
       done();

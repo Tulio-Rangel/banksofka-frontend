@@ -33,13 +33,13 @@ describe('DepositComponent', () => {
 
   it('should be invalid when amount is empty or less than 1', () => {
     const amountControl = component.depositForm.get('amount');
-  
+
     amountControl?.setValue(null);
     expect(component.depositForm.invalid).toBeTrue();
-  
+
     amountControl?.setValue(0);
     expect(component.depositForm.invalid).toBeTrue();
-  
+
     amountControl?.setValue(-5);
     expect(component.depositForm.invalid).toBeTrue();
   });
@@ -51,35 +51,35 @@ describe('DepositComponent', () => {
 
   it('should call createDeposit when form is submitted', () => {
     spyOn(apiService, 'createDeposit').and.callFake(() => of({}));
-  
-    component.accounts = [{ id: '1' }]; 
+
+    component.accounts = [{ id: '1' }];
     component.depositForm.get('amount')?.setValue(1000);
-    
+
     component.onSubmit();
-  
+
     expect(apiService.createDeposit).toHaveBeenCalledWith('1', jasmine.objectContaining({ amount: 1000 }));
   });
 
   it('should log an error message when deposit fails', () => {
     spyOn(console, 'error');
     spyOn(component['apiService'], 'createDeposit').and.returnValue(throwError(() => new Error('Server error')));
-  
+
     component.accounts = [{ id: '1' }];
     component.depositForm.get('amount')?.setValue(100);
-    
+
     component.onSubmit();
-  
+
     expect(console.error).toHaveBeenCalledWith('Error al depositar:', jasmine.any(Error));
   });
 
   it('should reset the form after a successful deposit', () => {
     spyOn(component['apiService'], 'createDeposit').and.returnValue(of({}));
-  
+
     component.accounts = [{ id: '1' }];
     component.depositForm.get('amount')?.setValue(500);
-    
+
     component.onSubmit();
-  
+
     expect(component.depositForm.value.amount).toBeNull();
   });
 });

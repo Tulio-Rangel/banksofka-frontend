@@ -8,7 +8,7 @@ describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule, HttpClientTestingModule],
     declarations: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA] 
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
   }));
 
   it('should create the app', () => {
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
   it('should contain a router-outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-  
+
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
@@ -28,7 +28,7 @@ describe('AppComponent', () => {
   it('should contain app-global-notifications', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-  
+
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('app-global-notifications')).toBeTruthy();
   });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/api.service';
+import { Transaction } from 'src/app/shared/models/transaction.model';
 
 @Component({
   selector: 'app-history',
@@ -9,7 +10,7 @@ import { ApiService } from 'src/app/shared/api.service';
 export class HistoryComponent implements OnInit {
   user: any;
   accounts: any[] = [];
-  transactions: any[] = [];
+  transactions: Transaction[] = [];
 
   constructor(private apiService: ApiService) { }
 
