@@ -1,0 +1,77 @@
+h1, h2 {
+  font-family: "Quicksand", serif;
+  font-weight: 700;
+  color:#626277 ;
+}
+
+.container {
+  text-align: center;
+  margin: -10px;
+  padding: 30px;
+}
+
+h3 {
+  font-family: "Quicksand", serif;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #626277;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 0 auto;
+  font-size: 24px;
+  background: white;
+  margin-bottom: 20px;
+  max-width: 500px
+}
+
+.currency {
+  font-size: 24px;
+  margin-right: 10px;
+  color: #333;
+}
+
+input {
+  border: none;
+  font-size: 24px;
+  width: 100%;
+  outline: none;
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: #626277;
+}
+
+.button {
+  background-color: #e3e829 ;
+  color: #0033a0;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+}
+
+.button:hover:not(:disabled) {
+  background-color: #d6dc24 !important;
+  color: #001f6b !important;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -30px;
+}

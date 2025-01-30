@@ -1,16 +1,18 @@
 .title, .btn-custom {
-  font-family: 'Sura', sans-serif;
+  font-family: "Quicksand", serif;
 }
 
 /* Título fuera del contenedor */
 .title {
   font-size: 2rem;
+  font-weight: 500;
   color: #626277;
   margin-bottom: 0.3rem;
 }
 
 .textoSystemBank {
-  font-family: SuraSansNegrita, sans-serif;
+  font-family: "Quicksand", serif;
+  font-weight: 700;
   font-size: 34px;
   line-height: 38px;
   text-align: center;
@@ -19,7 +21,8 @@
 }
 
 .form-label{
-  font-family: SuraSansRegular, sans-serif;
+  font-family: "Quicksand", serif;
+  font-weight: 500;
   color: #626277;
 }
 
@@ -29,14 +32,17 @@
     max-width: 350px;
   }
 
-.login-link{
-  color: #626277;
+.register-link{
+  font-family: "Quicksand", serif;
+  font-weight: 500;
 }
 
   /* Enlace de registro */
 .register-link a {
   color: #0056b3;
   text-decoration: none;
+  font-family: "Quicksand", serif;
+  font-weight: 600;
 }
 
 .register-link a:hover {
@@ -46,6 +52,8 @@
 .btn-custom {
   background-color: #e3e829 !important;
   color: #0033a0 !important;
+  font-family: "Quicksand", serif;
+  font-weight: 600;
   font-weight: bold;
   border: none;
 }
@@ -59,4 +67,8 @@
   width: 1.2rem;
   height: 1.2rem;
   border-width: 0.2em;
+}
+
+.text-danger {
+  font-family: 'Roboto', sans-serif;
 }
