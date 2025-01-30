@@ -19,7 +19,10 @@ export class WelcomeComponent implements OnInit {
     this.user = user;
 
     this.apiService.getUserAccounts(this.user.id).subscribe({
-      next: (response) => this.accounts = response,
+      next: (response) => {
+        this.accounts = response;
+        this.currentBalance = this.accounts[0]?.balance || 0;
+      },
       error: (error) => console.error('Error fetching accounts', error)
     });
 
