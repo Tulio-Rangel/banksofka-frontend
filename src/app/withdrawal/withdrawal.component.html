@@ -11,13 +11,16 @@
         <span class="currency">$</span>
         <input id="amount" type="number" formControlName="amount" required>
       </div>
-      <div *ngIf="withdrawalForm.get('amount')?.invalid && withdrawalForm.get('amount')?.touched">
-        <small *ngIf="withdrawalForm.get('amount')?.errors?.['required']" class="text-e">El monto es obligatorio.</small>
-        <small *ngIf="withdrawalForm.get('amount')?.errors?.['min']" class="text-e">El monto debe ser mayor a 0.</small>
+      <div *ngIf="errorMessage" class="text-danger mt-2">
+        {{ errorMessage }}
       </div>
-    </div>
-    <div class="button-container">
-      <button class="button" type="submit" [disabled]="withdrawalForm.invalid">Retirar</button>
+      <div *ngIf="withdrawalForm.get('amount')?.invalid && withdrawalForm.get('amount')?.touched" class="text-danger mt-2">
+        <small *ngIf="withdrawalForm.get('amount')?.errors?.['required']">El monto es obligatorio.</small>
+        <small *ngIf="withdrawalForm.get('amount')?.errors?.['min']">El monto debe ser mayor a 0.</small>
+      </div>
+      <div class="button-container">
+        <button class="button" type="submit" [disabled]="withdrawalForm.invalid">Retirar</button>
+      </div>
     </div>
   </form>
 </div>

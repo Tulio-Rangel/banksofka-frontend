@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class MainLayoutComponent {
 
+  sidebarOpen = false;
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
 
   logout(): void {
     localStorage.removeItem('token');

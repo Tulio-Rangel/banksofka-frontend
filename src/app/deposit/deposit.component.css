@@ -5,8 +5,9 @@ h1, h2 {
 }
 
 .container {
+  display: block;
   text-align: center;
-  margin: -10px;
+  margin: 0 auto;
   padding: 30px;
 }
 
@@ -73,5 +74,11 @@ input {
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: -30px;
+  margin: 0 auto;
+}
+
+.text-danger{
+  font-family: "Quicksand", serif;
+  font-weight: 500;
+  padding-bottom: 10px;
 }

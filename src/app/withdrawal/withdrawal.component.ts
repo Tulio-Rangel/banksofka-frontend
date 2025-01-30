@@ -13,6 +13,8 @@ export class WithdrawalComponent implements OnInit{
   withdrawalForm: FormGroup;
   user: any;
   accounts: any[] = [];
+  currentBalance: number = 0;
+  errorMessage: string = ''
 
   constructor(private apiService: ApiService, private formBuilder: FormBuilder, private transactionStreamService: TransactionStreamService) {
 
@@ -28,13 +30,28 @@ export class WithdrawalComponent implements OnInit{
       next: (response) => this.accounts = response,
       error: (error) => console.error('Error fetching accounts', error)
       });
+
+      this.transactionStreamService.getTransactionStream().subscribe({
+        next: (transaction) => {
+          if (!transaction) return;
+          this.currentBalance = transaction.finalBalance;
+        },
+        error: (error) => console.error('Error en el stream:', error)
+      });
   }
 
   onSubmit(): void {
     if (this.withdrawalForm.valid) {
-      const body = this.withdrawalForm.value
-      console.warn('Retiro hecho', this.withdrawalForm.value);
-      this.apiService.createWithdrawal(this.accounts[0].id, this.withdrawalForm.value).subscribe({
+      const amount = this.withdrawalForm.value;
+      const account = this.accounts[0];
+
+      if(!account || amount > this.currentBalance){
+        this.errorMessage = 'Error: No tienes suficientes fondos para este retiro.';
+        return;
+      }
+
+      console.warn('Retiro hecho', amount);
+      this.apiService.createWithdrawal(account.id, amount).subscribe({
         next: (response) => {
           console.log('Retiro exitoso:', response);
           this.withdrawalForm.reset();
