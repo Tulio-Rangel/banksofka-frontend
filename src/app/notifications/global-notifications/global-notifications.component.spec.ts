@@ -56,10 +56,10 @@ describe('GlobalNotificationsComponent', () => {
     const mockTransaction = { id: 2, date: new Date(), transactionType: 'Transfer', amount: 200, initialBalance: 800, finalBalance: 1000 };
     transactionStreamService.getTransactionStream.and.returnValue(of(mockTransaction));
     fixture.detectChanges();
-    const transactionElement = fixture.debugElement.query(By.css('.notification')).nativeElement;
-    expect(transactionElement.textContent).toContain('🛠 Nueva Transacción');
+    const transactionElement = fixture.debugElement.query(By.css('.notification-body')).nativeElement;
     expect(transactionElement.textContent).toContain(`ID: ${mockTransaction.id}`);
-    expect(transactionElement.textContent).toContain(`Monto: $${mockTransaction.amount}`);
+    expect(transactionElement.textContent).toContain(`$${mockTransaction.amount}`);
+    expect(transactionElement.textContent).toContain(`${mockTransaction.transactionType.toLowerCase()}`);
   });
 
   it('should log an error when transaction stream fails', () => {

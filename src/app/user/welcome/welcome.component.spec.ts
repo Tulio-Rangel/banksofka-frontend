@@ -48,7 +48,7 @@ describe('WelcomeComponent', () => {
     const mockTransaction = { id: 1, date: new Date(), transactionType: 'Deposit', amount: 100, initialBalance: 500, finalBalance: 600 };
     transactionStreamService.getTransactionStream.and.returnValue(of(mockTransaction));
     fixture.detectChanges();
-    const balanceElement: HTMLElement = fixture.nativeElement.querySelector('.p-custom');
+    const balanceElement: HTMLElement = fixture.nativeElement.querySelector('.p-balance');
     expect(balanceElement).toBeTruthy();
     expect(balanceElement.textContent).toContain('$600.00');
   });
