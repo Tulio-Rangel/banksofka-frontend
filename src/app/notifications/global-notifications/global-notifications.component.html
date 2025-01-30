@@ -1,4 +1,4 @@
-    <div *ngFor="let transaction of transactions" class="notification-card">
+<div *ngFor="let transaction of transactions" class="notification-card">
       <div class="notification-header">
         <span class="icon">💳</span>
         <span class="title">Nueva Transacción</span>
@@ -6,6 +6,9 @@
       <div class="notification-body">
         <span class="transaction-id">ID: {{ transaction.id }}</span>
         <span class="amount">{{ transaction.amount | currency }}</span>
-        <span class="transaction-type">{{ transaction.transactionType | lowercase }}</span>
+        <span class="transaction-type" [ngClass]="{
+          'text-success': transaction.transactionType.toLowerCase() === 'deposit',
+          'text-danger': transaction.transactionType.toLowerCase() === 'withdrawal'
+        }">{{ transaction.transactionType | lowercase }}</span>
       </div>
     </div>
