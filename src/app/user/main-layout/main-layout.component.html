@@ -1,42 +1,46 @@
 <div class="container-fluid">
-    <div class="row">
-        <!-- Sidebar -->
-        <nav class="col-md-3 col-lg-2 d-md-block bg-white sidebar">
-            <div class="position-sticky p-3">
-                <h2 class="text-center text-custom mb-4">SofkaBank</h2>
-                <ul class="nav flex-column">
-                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                        <a class="nav-link" routerLink="/welcome">
-                            <i class="bi bi-house-door-fill icono"></i> Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                        <a class="nav-link" routerLink="/history">
-                            <i class="bi bi-currency-dollar icono"></i> Movimientos
-                        </a>
-                    </li>
-                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                        <a class="nav-link" routerLink="/deposit">
-                            <i class="bi bi-cash-coin icono"></i> Depósito
-                        </a>
-                    </li>
-                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                        <a class="nav-link" routerLink="/withdrawal">
-                            <i class="bi bi-database-down icono"></i> Retiro
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link logout-link" (click)="logout()">
-                            <i class="bi bi-box-arrow-right icono"></i> Salir
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+  <div class="row">
+      <!-- Botón para mostrar/ocultar la barra lateral en móviles -->
+      <button class="btn btn-toggle d-md-none" (click)="toggleSidebar()">☰ Menú</button>
 
-        <!-- Contenido dinámico -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-            <router-outlet></router-outlet>
-        </main>
-    </div>
+      <!-- Sidebar -->
+      <nav class="col-md-3 col-lg-2 d-md-block bg-white sidebar" [class.active]="sidebarOpen">
+          <div class="position-sticky p-3">
+              <h2 class="text-center text-custom mb-4">SofkaBank</h2>
+              <ul class="nav flex-column">
+                  <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                      <a class="nav-link" routerLink="/welcome">
+                          <i class="bi bi-house-door-fill icono"></i> Inicio
+                      </a>
+                  </li>
+                  <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                      <a class="nav-link" routerLink="/history">
+                          <i class="bi bi-currency-dollar icono"></i> Movimientos
+                      </a>
+                  </li>
+                  <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                      <a class="nav-link" routerLink="/deposit">
+                          <i class="bi bi-cash-coin icono"></i> Depósito
+                      </a>
+                  </li>
+                  <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                      <a class="nav-link" routerLink="/withdrawal">
+                          <i class="bi bi-database-down icono"></i> Retiro
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link logout-link" (click)="logout()">
+                          <i class="bi bi-box-arrow-right icono"></i> Salir
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+
+      <!-- Contenido dinámico -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <router-outlet></router-outlet>
+      </main>
+  </div>
 </div>
+

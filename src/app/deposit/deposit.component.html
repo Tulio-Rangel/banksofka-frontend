@@ -13,13 +13,14 @@
       </div>
 
       <!-- Mensajes de error -->
-      <div *ngIf="depositForm.get('amount')?.invalid && depositForm.get('amount')?.touched">
+      <div *ngIf="depositForm.get('amount')?.invalid && depositForm.get('amount')?.touched" class="text-danger mt-2">
         <small *ngIf="depositForm.get('amount')?.errors?.['required']">El monto es obligatorio.</small>
         <small *ngIf="depositForm.get('amount')?.errors?.['min']">El monto debe ser mayor a 0.</small>
       </div>
+      <div class="button-container">
+        <button class="button" type="submit" [disabled]="!depositForm.valid">Depositar</button>
+      </div>
     </div>
-    <div class="button-container">
-      <button class="button" type="submit" [disabled]="!depositForm.valid">Depositar</button>
-    </div>
+
   </form>
 </div>
