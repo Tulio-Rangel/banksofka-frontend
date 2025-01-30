@@ -5,12 +5,12 @@
     <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
       <div class="mb-3">
         <label for="name" class="form-label">Nombre completo</label>
-        <input type="text" 
-               id="name" 
-               [(ngModel)]="user.name" 
-               name="name" 
-               class="form-control" 
-               required 
+        <input type="text"
+               id="name"
+               [(ngModel)]="user.name"
+               name="name"
+               class="form-control"
+               required
                minlength="3"
                #name="ngModel">
         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-danger small">
@@ -21,11 +21,11 @@
 
       <div class="mb-3">
         <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" 
-               id="email" 
-               [(ngModel)]="user.email" 
-               name="email" 
-               class="form-control" 
+        <input type="email"
+               id="email"
+               [(ngModel)]="user.email"
+               name="email"
+               class="form-control"
                required
                email
                #email="ngModel">
@@ -37,12 +37,12 @@
 
       <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" 
-               id="password" 
-               [(ngModel)]="user.password" 
-               name="password" 
-               class="form-control" 
-               required 
+        <input type="password"
+               id="password"
+               [(ngModel)]="user.password"
+               name="password"
+               class="form-control"
+               required
                minlength="6"
                #password="ngModel">
         <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger small">
@@ -53,11 +53,11 @@
 
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
       <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
-      
+
       <button type="submit" class="btn btn-custom w-100" [disabled]="registerForm.invalid">
         Registrarse
       </button>
-      <p class="register-link text-center mt-3">¿Ya tienes una cuenta? <a routerLink="/login">Ingresa aquí</a></p>
+      <p class="login-link text-center mt-3">¿Ya tienes una cuenta? <a routerLink="/login">Ingresa aquí</a></p>
     </form>
   </div>
 </div>

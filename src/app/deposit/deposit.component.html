@@ -1,17 +1,25 @@
 <div class="d-flex flex-column justify-content-between pt-3 pb-2 mb-3 border-bottom">
-  <h1> Haz tu depósito</h1>
+  <h1> Haz un depósito</h1>
 </div>
 
-<form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="amount">
-      Monto a depositar
-    </label>
-    <input id="amount" type="number" formControlName="amount" required>
-    <div *ngIf="depositForm.get('amount')?.invalid && depositForm.get('amount')?.touched">
-      <small *ngIf="depositForm.get('amount')?.errors?.['required']">El monto es obligatorio.</small>
-      <small *ngIf="depositForm.get('amount')?.errors?.['min']">El monto debe ser mayor a 0.</small>
+<div class="card shadow-sm p-4 mb-4">
+  <form [formGroup]="depositForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <h3>¿Cuánto dinero deseas depositar?</h3>
+
+      <div class="input-container">
+        <span class="currency">$</span>
+        <input id="amount" type="number" formControlName="amount" required>
+      </div>
+
+      <!-- Mensajes de error -->
+      <div *ngIf="depositForm.get('amount')?.invalid && depositForm.get('amount')?.touched">
+        <small *ngIf="depositForm.get('amount')?.errors?.['required']">El monto es obligatorio.</small>
+        <small *ngIf="depositForm.get('amount')?.errors?.['min']">El monto debe ser mayor a 0.</small>
+      </div>
     </div>
-  </div>
-  <button class="button" type="submit" [disabled]="depositForm.invalid">Depositar</button>
-</form>
+    <div class="button-container">
+      <button class="button" type="submit" [disabled]="!depositForm.valid">Depositar</button>
+    </div>
+  </form>
+</div>

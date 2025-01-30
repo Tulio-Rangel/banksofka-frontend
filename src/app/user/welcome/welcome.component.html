@@ -1,13 +1,12 @@
 <div class="d-flex flex-column justify-content-between pt-3 pb-2 mb-3 border-bottom">
-    <h1> ¡Hola, {{ user.name }}!</h1>
-    <p>Email: {{ user.email }}</p>
+    <h1 class="h2"> ¡Hola, {{ user.name }}!</h1>
 </div>
 
 <!-- Tarjeta de saldo -->
 <div class="card shadow-sm p-4 mb-4">
     <h3 class="text-custom"><i class="bi bi-wallet2"></i> Saldo Disponible</h3>
     <div *ngFor="let account of accounts" class="account-item">
-        <p>Número de Cuenta: {{ account.accountNumber }}</p>
-        <p class="p-custom">{{ currentBalance | currency: 'USD'}}</p>
+        <p class="p-account">No. de Cuenta: {{ account.accountNumber }}</p>
+        <p class="p-balance">{{ currentBalance | currency: 'USD'}}</p>
     </div>
 </div>

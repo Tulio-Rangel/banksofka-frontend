@@ -1,5 +1,5 @@
 .title, .btn-custom {
-  font-family: 'Sura', sans-serif;
+  font-family: "Quicksand", serif;
 }
 
 /* Título fuera del contenedor */
@@ -10,7 +10,7 @@
 }
 
 .textoSystemBank {
-  font-family: SuraSansNegrita, sans-serif;
+  font-family: "Quicksand", serif;
   font-size: 34px;
   line-height: 38px;
   text-align: center;
@@ -19,7 +19,8 @@
 }
 
 .form-label{
-  font-family: SuraSansRegular, sans-serif;
+  font-family: "Quicksand", serif;
+  font-weight: 500;
   color: #626277;
 }
 
@@ -30,13 +31,16 @@
   }
 
 .login-link{
-  color: #626277;
+  font-family: "Quicksand", serif;
+  font-weight: 500;
 }
 
   /* Enlace de registro */
 .login-link a {
   color: #0056b3;
   text-decoration: none;
+  font-family: "Quicksand", serif;
+  font-weight: 600;
 }
 
 .login-link a:hover {
@@ -46,6 +50,8 @@
 .btn-custom {
   background-color: #e3e829 !important;
   color: #0033a0 !important;
+  font-family: "Quicksand", serif;
+  font-weight: 600;
   font-weight: bold;
   border: none;
 }
@@ -53,5 +59,10 @@
 .btn-custom:hover {
   background-color: #d6dc24 !important;
   color: #001f6b !important;
+}
+
+
+.text-danger {
+  font-family: 'Roboto', sans-serif;
 }
 

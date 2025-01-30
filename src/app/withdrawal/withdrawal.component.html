@@ -2,16 +2,22 @@
   <h1> Haz un retiro</h1>
 </div>
 
-<form [formGroup]="withdrawalForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="amount">
-      Monto a retirar
-    </label>
-    <input id="amount" type="number" formControlName="amount" required>
-    <div *ngIf="withdrawalForm.get('amount')?.invalid && withdrawalForm.get('amount')?.touched">
-      <small *ngIf="withdrawalForm.get('amount')?.errors?.['required']">El monto es obligatorio.</small>
-      <small *ngIf="withdrawalForm.get('amount')?.errors?.['min']">El monto debe ser mayor a 0.</small>
+<div class="card shadow-sm p-4 mb-4">
+  <form [formGroup]="withdrawalForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <h3>¿Cuánto dinero deseas retirar?</h3>
+
+      <div class="input-container">
+        <span class="currency">$</span>
+        <input id="amount" type="number" formControlName="amount" required>
+      </div>
+      <div *ngIf="withdrawalForm.get('amount')?.invalid && withdrawalForm.get('amount')?.touched">
+        <small *ngIf="withdrawalForm.get('amount')?.errors?.['required']" class="text-e">El monto es obligatorio.</small>
+        <small *ngIf="withdrawalForm.get('amount')?.errors?.['min']" class="text-e">El monto debe ser mayor a 0.</small>
+      </div>
     </div>
-  </div>
-  <button class="button" type="submit" [disabled]="withdrawalForm.invalid">Retirar</button>
-</form>
+    <div class="button-container">
+      <button class="button" type="submit" [disabled]="withdrawalForm.invalid">Retirar</button>
+    </div>
+  </form>
+</div>
