@@ -44,8 +44,7 @@ export class WithdrawalComponent implements OnInit{
     if (this.withdrawalForm.valid) {
       const amount = this.withdrawalForm.value;
       const account = this.accounts[0];
-
-      if(!account || amount > this.currentBalance){
+      if(!account || amount.amount > this.currentBalance){
         this.errorMessage = 'Error: No tienes suficientes fondos para este retiro.';
         return;
       }

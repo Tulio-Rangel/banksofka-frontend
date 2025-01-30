@@ -53,6 +53,7 @@ describe('WithdrawalComponent', () => {
     spyOn(apiService, 'createWithdrawal').and.callFake(() => of({}));
 
     component.accounts = [{ id: '1' }];
+    component.currentBalance = 2000;
     component.withdrawalForm.get('amount')?.setValue(1000);
 
     component.onSubmit();
@@ -65,6 +66,7 @@ describe('WithdrawalComponent', () => {
     spyOn(component['apiService'], 'createWithdrawal').and.returnValue(throwError(() => new Error('Server error')));
 
     component.accounts = [{ id: '1' }];
+    component.currentBalance = 600;
     component.withdrawalForm.get('amount')?.setValue(100);
 
     component.onSubmit();
@@ -76,6 +78,7 @@ describe('WithdrawalComponent', () => {
     spyOn(component['apiService'], 'createWithdrawal').and.returnValue(of({}));
 
     component.accounts = [{ id: '1' }];
+    component.currentBalance = 600;
     component.withdrawalForm.get('amount')?.setValue(500);
 
     component.onSubmit();
