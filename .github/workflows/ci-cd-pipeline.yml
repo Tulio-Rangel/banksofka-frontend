@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  analyze:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -23,8 +23,14 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Run Unit Tests
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+        run: npm run test --watch=false
           
       - name: SonarCloud scan
         uses: SonarSource/sonarqube-scan-action@v4
