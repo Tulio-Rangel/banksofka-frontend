@@ -1,0 +1,74 @@
+.title, .btn-custom {
+  font-family: "Quicksand", serif;
+}
+
+/* Título fuera del contenedor */
+.title {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #626277;
+  margin-bottom: 0.3rem;
+}
+
+.textoSystemBank {
+  font-family: "Quicksand", serif;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 38px;
+  text-align: center;
+  color: #0033A0;
+  margin-bottom: 10px;
+}
+
+.form-label{
+  font-family: "Quicksand", serif;
+  font-weight: 500;
+  color: #626277;
+}
+
+  /* Contenedor del login */
+  .login-container {
+    width: 100%;
+    max-width: 350px;
+  }
+
+.register-link{
+  font-family: "Quicksand", serif;
+  font-weight: 500;
+}
+
+  /* Enlace de registro */
+.register-link a {
+  color: #0056b3;
+  text-decoration: none;
+  font-family: "Quicksand", serif;
+  font-weight: 600;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+.btn-custom {
+  background-color: #e3e829 !important;
+  color: #0033a0 !important;
+  font-family: "Quicksand", serif;
+  font-weight: 600;
+  font-weight: bold;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #d6dc24 !important;
+  color: #001f6b !important;
+}
+
+.spinner-border {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-width: 0.2em;
+}
+
+.text-danger {
+  font-family: 'Roboto', sans-serif;
+}

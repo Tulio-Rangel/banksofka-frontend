@@ -1,0 +1,23 @@
+@import "node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+h1, h2, h3 {
+  font-family: "Quicksand", serif;
+  color:#626277;
+  font-weight: 700;
+}
+
+.h2 {
+  color: #626277;
+}
+
+th, td{
+  font-family: "Quicksand", serif;
+}
+
+.text-danger {
+  color: #D9534F; /* Rojo para retiros */
+}
+
+.text-success {
+  color: #28a745; /* Verde para depósitos */
+}

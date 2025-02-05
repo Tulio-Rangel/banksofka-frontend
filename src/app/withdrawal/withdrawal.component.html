@@ -1,0 +1,26 @@
+<div class="d-flex flex-column justify-content-between pt-3 pb-2 mb-3 border-bottom">
+  <h1> Haz un retiro</h1>
+</div>
+
+<div class="card shadow-sm p-4 mb-4">
+  <form [formGroup]="withdrawalForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <h3>¿Cuánto dinero deseas retirar?</h3>
+
+      <div class="input-container">
+        <span class="currency">$</span>
+        <input id="amount" type="number" formControlName="amount" required>
+      </div>
+      <div *ngIf="errorMessage" class="text-danger mt-2">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="withdrawalForm.get('amount')?.invalid && withdrawalForm.get('amount')?.touched" class="text-danger mt-2">
+        <small *ngIf="withdrawalForm.get('amount')?.errors?.['required']">El monto es obligatorio.</small>
+        <small *ngIf="withdrawalForm.get('amount')?.errors?.['min']">El monto debe ser mayor a 0.</small>
+      </div>
+      <div class="button-container">
+        <button class="button" type="submit" [disabled]="withdrawalForm.invalid">Retirar</button>
+      </div>
+    </div>
+  </form>
+</div>

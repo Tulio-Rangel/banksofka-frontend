@@ -1,0 +1,113 @@
+@import "node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+h1, h2, h3 {
+  font-family: "Quicksand", serif;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+/* SIDEBAR */
+.sidebar {
+  height: 100vh;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  box-shadow: 8px 0 10px -5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+/* Links del menú */
+.nav-link {
+  padding: 15px;
+  font-family: "Quicksand", serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 8px;
+  color: #626277;
+  transition: background 0.3s ease-in-out, color 0.3s;
+}
+
+.nav-link:hover {
+  background: rgba(0, 51, 160, 0.1);
+  color: #0033a0;
+}
+
+/* ÍCONOS */
+.icono {
+  font-size: 1.8rem;
+  color: #626277;
+  transition: color 0.3s;
+}
+
+.nav-link:hover .icono {
+  color: #0033a0;
+}
+
+/* LINK ACTIVO */
+.nav-item .active {
+  background: rgba(0, 51, 160, 0.1);
+  color: #0033a0;
+}
+
+.nav-item .active .icono {
+  color: #0033a0;
+}
+
+.text-custom {
+  color: #0033a0;
+}
+
+/* RESPONSIVIDAD */
+@media (max-width: 768px) {
+  .sidebar {
+      transform: translateX(-100%);
+      position: fixed;
+      width: 250px;
+      box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Mostrar sidebar cuando esté activo */
+  .sidebar.active {
+      transform: translateX(0);
+  }
+
+  /* Ajustes en los enlaces */
+  .nav-link {
+      padding: 12px;
+      font-size: 1rem;
+  }
+
+  /* Reducir iconos */
+  .icono {
+      font-size: 1.5rem;
+  }
+
+  /* BOTÓN PARA ABRIR MENU */
+  .btn-toggle {
+    font-family: "Quicksand", serif;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #e3e829;
+      color: #0033a0;
+      border: none;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      z-index: 1101;
+      transition: background 0.3s ease-in-out;
+  }
+
+  .btn-toggle:hover {
+      background: #002080;
+  }
+}
