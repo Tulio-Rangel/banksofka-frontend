@@ -48,11 +48,11 @@ jobs:
       
       - name: Tag Docker Image
         run: |
-          docker tag ghcr.io/${{ github.repository | toLower }}/banksofka-frontend:${{ github.sha }} ghcr.io/${{ github.repository }}/banksofka-frontend:v1.0.0
-          docker tag ghcr.io/${{ github.repository | toLower }}/banksofka-frontend:${{ github.sha }} ghcr.io/${{ github.repository }}/banksofka-frontend:latest
+          docker tag ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }} ghcr.io/${{ github.repository }}/banksofka-frontend:v1.0.0
+          docker tag ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }} ghcr.io/${{ github.repository }}/banksofka-frontend:latest
 
       - name: Push Docker Image
         run: |
-          docker push ghcr.io/${{ github.repository | toLower }}/banksofka-frontend:${{ github.sha }}
-          docker push ghcr.io/${{ github.repository | toLower }}/banksofka-frontend:v1.0.0
-          docker push ghcr.io/${{ github.repository | toLower }}/banksofka-frontend:latest
+          docker push ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }}
+          docker push ghcr.io/tulio-rangel/banksofka-frontend:v1.0.0
+          docker push ghcr.io/tulio-rangel/banksofka-frontend:latest
