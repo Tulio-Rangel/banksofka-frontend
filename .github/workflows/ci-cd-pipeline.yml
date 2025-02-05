@@ -44,7 +44,7 @@ jobs:
       
       - name: Build Docker Image
         run: |
-          docker build -t ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }} .
+          docker build -t ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }}
       
       - name: Tag Docker Image
         run: |
