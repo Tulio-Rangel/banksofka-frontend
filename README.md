@@ -48,4 +48,3 @@ Banksofka es una aplicación bancaria moderna que permite a los usuarios gestion
 - **Estado**: Gestión de estado mediante servicios y RxJS
 - **API**: Comunicación RESTful con backend mediante HttpClient
 
-test
