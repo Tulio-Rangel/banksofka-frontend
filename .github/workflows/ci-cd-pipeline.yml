@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Run Unit Tests
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+        run: npm run test --watch=false --code-coverage
           
       - name: SonarCloud scan
         uses: SonarSource/sonarqube-scan-action@v4
@@ -44,7 +44,7 @@ jobs:
       
       - name: Build Docker Image
         run: |
-          docker build -t ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }}
+          docker build -t ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }} .
       
       - name: Tag Docker Image
         run: |
@@ -54,5 +54,5 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }}
-          docker push ghcr.io/tulio-rangel/banksofka-frontend:v1.0.0
+          docker push ghcr.io/tulio-rangel/banksofka-frontend:${{ github.ref_name }}
           docker push ghcr.io/tulio-rangel/banksofka-frontend:latest
