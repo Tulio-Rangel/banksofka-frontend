@@ -43,16 +43,11 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
       
       - name: Build Docker Image
-        run: |
-          docker build -t ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }} .
-      
-      - name: Tag Docker Image
-        run: |
-          docker tag ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }} ghcr.io/tulio-rangel/banksofka-frontend:${{ github.ref_name }}
-          docker tag ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }} ghcr.io/tulio-rangel/banksofka-frontend:latest
-
-      - name: Push Docker Image
-        run: |
-          docker push ghcr.io/tulio-rangel/banksofka-frontend:${{ github.sha }}
-          docker push ghcr.io/tulio-rangel/banksofka-frontend:${{ github.ref_name }}
-          docker push ghcr.io/tulio-rangel/banksofka-frontend:latest
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            ghcr.io/tulio-rangel/banksofka-frontend:latest
+            ghcr.io/tulio-rangel/banksofka-frontend:${{ github.ref_name }}
