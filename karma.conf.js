@@ -4,13 +4,13 @@ module.exports = function (config) {
       plugins: [
         require('karma-jasmine'),
         require('karma-chrome-launcher'),
-        require('karma-coverage-istanbul-reporter'),  // Asegúrate de que esta línea esté incluida
+        require('karma-coverage-istanbul-reporter'),
         require('@angular-devkit/build-angular/plugins/karma')
       ],
-      reporters: ['progress', 'coverage-istanbul'],  // Incluye coverage-istanbul o coverage aquí
+      reporters: ['progress', 'coverage-istanbul'],
       coverageIstanbulReporter: {
-        dir: require('path').join(__dirname, './coverage'),  // Esta es la carpeta donde se guardarán los archivos
-        reports: ['html', 'lcovonly', 'text-summary'],  // Los reportes que quieres generar
+        dir: require('path').join(__dirname, './coverage'),
+        reports: ['html', 'lcovonly', 'text-summary'],
         fixWebpackSourcePaths: true
       },
       browsers: ['ChromeHeadless'],
