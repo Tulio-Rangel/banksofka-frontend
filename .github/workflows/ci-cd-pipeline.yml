@@ -54,3 +54,7 @@ jobs:
           tags: |
             ghcr.io/tulio-rangel/banksofka-frontend:latest
             ghcr.io/tulio-rangel/banksofka-frontend:${{ github.ref_name }}
+          build-args: |
+            BANK_API_URL=${{ secrets.BANK_API_URL }}
+            REACTIVE_API_URL=${{ secrets.REACTIVE_API_URL }}
+

@@ -1,11 +1,12 @@
 import { Injectable, NgZone } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionStreamService {
-  private readonly reactiveApiUrl = 'http://bank-sofka-reactive:8081/api/audit/transactions/stream';
+  private readonly reactiveApiUrl = `${environment.reactiveApiUrl}/api/audit/transactions/stream`;
   private eventSource!: EventSource;
   private readonly transactionSubject = new BehaviorSubject<any>(null);
 

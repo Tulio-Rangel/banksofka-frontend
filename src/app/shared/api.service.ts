@@ -4,12 +4,14 @@ import { Observable } from 'rxjs';
 import { AuthResponse } from './models/auth-response.model';
 import { User } from './models/user.model';
 import { Transaction } from './models/transaction.model';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private readonly apiUrl = 'http://bankproject:8080/api';
+  private readonly apiUrl = `${environment.apiUrl}/api`;
 
   constructor(private readonly http: HttpClient) { }
 
