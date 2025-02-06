@@ -12,7 +12,7 @@ COPY . .
 ARG BANK_API_URL
 ARG REACTIVE_API_URL
 
-RUN echo "export const environment = { production: true, apiUrl: '${BANK_API_URL}', reactiveApiUrl: '${REACTIVE_API_URL}' };" > src/environments/environment.prod.ts
+RUN echo "export const environment = { production: true, apiUrl: '${BANK_API_URL}', reactiveApiUrl: '${REACTIVE_API_URL}' };" > src/environments/environment.ts
 
 RUN npm run build --configuration=production
 
