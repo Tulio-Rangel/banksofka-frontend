@@ -9,7 +9,6 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 describe('WelcomeComponent', () => {
   let component: WelcomeComponent;
   let fixture: ComponentFixture<WelcomeComponent>;
-  let apiService;
   let transactionStreamService: jasmine.SpyObj<TransactionStreamService>;
 
   beforeEach(() => {
@@ -26,7 +25,6 @@ describe('WelcomeComponent', () => {
     });
     fixture = TestBed.createComponent(WelcomeComponent);
     component = fixture.componentInstance;
-    apiService = TestBed.inject(ApiService);
     transactionStreamService = TestBed.inject(TransactionStreamService) as jasmine.SpyObj<TransactionStreamService>;;
   });
 

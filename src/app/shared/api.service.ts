@@ -9,9 +9,9 @@ import { Transaction } from './models/transaction.model';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'http://localhost:8080/api';
+  private readonly apiUrl = 'http://bankproject:8080/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');

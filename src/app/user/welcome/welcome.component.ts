@@ -12,10 +12,10 @@ export class WelcomeComponent implements OnInit {
   accounts: any[] = [];
   currentBalance: number = 0;
 
-  constructor(private apiService: ApiService, private transactionStreamService: TransactionStreamService) { }
+  constructor(private readonly apiService: ApiService, private readonly transactionStreamService: TransactionStreamService) { }
 
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('user') ?? '{}');
     this.user = user;
 
     this.apiService.getUserAccounts(this.user.id).subscribe({

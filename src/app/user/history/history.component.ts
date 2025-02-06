@@ -12,10 +12,10 @@ export class HistoryComponent implements OnInit {
   accounts: any[] = [];
   transactions: Transaction[] = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private readonly apiService: ApiService) { }
 
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('user') ?? '{}');
     this.user = user;
 
     this.apiService.getUserAccounts(this.user.id).subscribe({
@@ -25,14 +25,14 @@ export class HistoryComponent implements OnInit {
         if (this.accounts.length > 0) {
           const firstAccountId = this.accounts[0].id;
 
-          this.apiService.getTransactionsHistory(firstAccountId).subscribe(
-            (transactions) => {
+          this.apiService.getTransactionsHistory(firstAccountId).subscribe({
+            next: (transactions) => {
               this.transactions = transactions;
             },
-            (error) => {
+            error: (error) => {
               console.error('Error fetching transactions', error);
             }
-          );
+          });
 
         } else {
           console.warn('No accounts found for the user');

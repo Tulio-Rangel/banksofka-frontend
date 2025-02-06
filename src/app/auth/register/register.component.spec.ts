@@ -74,7 +74,7 @@ describe('RegisterComponent', () => {
     component.user.name = 'test-user';
     component.user.email = 'test@example.com';
     component.user.password = 'wrongpassword';
-    spyOn(apiService, 'register').and.callFake(() => throwError({ error: 'Invalid data' }));
+    spyOn(apiService, 'register').and.callFake(() => throwError(() => ({ error: 'Invalid data' })));
     component.onSubmit(registerForm);
     fixture.detectChanges();
     expect(component.errorMessage).toBe('Error en el registro. Por favor, intente nuevamente');

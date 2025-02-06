@@ -16,14 +16,14 @@ export class WithdrawalComponent implements OnInit{
   currentBalance: number = 0;
   errorMessage: string = ''
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private transactionStreamService: TransactionStreamService) {
+  constructor(private readonly apiService: ApiService, private readonly formBuilder: FormBuilder, private readonly transactionStreamService: TransactionStreamService) {
 
       this.withdrawalForm = this.formBuilder.group({
         amount: [null, [Validators.required, Validators.min(1)]],
       });
     }
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('user') ?? '{}');
     this.user = user;
 
     this.apiService.getUserAccounts(this.user.id).subscribe({

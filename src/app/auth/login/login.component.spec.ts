@@ -66,7 +66,7 @@ describe('LoginComponent', () => {
     const loginForm = fixture.debugElement.query(By.css('form')).injector.get(NgForm);
     component.email = 'test@example.com';
     component.password = 'wrongpassword';
-    spyOn(apiService, 'login').and.callFake(() => throwError({ error: 'Invalid credentials' }));
+    spyOn(apiService, 'login').and.callFake(() => throwError(() => ({ error: 'Invalid credentials' })));
     component.onSubmit(loginForm);
     tick(2000);
     fixture.detectChanges();

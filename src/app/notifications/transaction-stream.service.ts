@@ -5,11 +5,11 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TransactionStreamService {
-  private reactiveApiUrl = 'http://localhost:8081/api/audit/transactions/stream';
+  private readonly reactiveApiUrl = 'http://bank-sofka-reactive:8081/api/audit/transactions/stream';
   private eventSource!: EventSource;
-  private transactionSubject = new BehaviorSubject<any>(null);
+  private readonly transactionSubject = new BehaviorSubject<any>(null);
 
-  constructor(private zone: NgZone) {
+  constructor(private readonly zone: NgZone) {
     this.startTransactionStream();
   }
 
