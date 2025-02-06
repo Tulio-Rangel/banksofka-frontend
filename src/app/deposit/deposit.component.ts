@@ -14,7 +14,7 @@ export class DepositComponent implements OnInit{
   user: any;
   accounts: any[] = [];
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder, private transactionStreamService: TransactionStreamService) {
+  constructor(private readonly apiService: ApiService, private readonly formBuilder: FormBuilder) {
 
     this.depositForm = this.formBuilder.group({
       amount: [null, [Validators.required, Validators.min(1)]],
@@ -22,7 +22,7 @@ export class DepositComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = JSON.parse(localStorage.getItem('user') ?? '{}');
     this.user = user;
 
     this.apiService.getUserAccounts(this.user.id).subscribe({
@@ -34,8 +34,8 @@ export class DepositComponent implements OnInit{
   onSubmit(): void {
     if(this.depositForm.valid){
       const body = this.depositForm.value;
-      console.warn('Deposito hecho', this.depositForm.value);
-      this.apiService.createDeposit(this.accounts[0].id, this.depositForm.value).subscribe({
+      console.warn('Deposito hecho', body);
+      this.apiService.createDeposit(this.accounts[0].id, body).subscribe({
         next: (response) => {
           console.log('Depósito exitoso:', response);
           this.depositForm.reset();

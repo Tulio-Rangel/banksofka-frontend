@@ -14,7 +14,7 @@ export class RegisterComponent {
   errorMessage: string = '';
   successMessage: string = '';
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private readonly apiService: ApiService, private readonly router: Router) { }
 
   onSubmit(form: NgForm): void {
     if (form.invalid) {
@@ -32,17 +32,17 @@ export class RegisterComponent {
       return;
     }
 
-    this.apiService.register(this.user).subscribe(
-      (response) => {
+    this.apiService.register(this.user).subscribe({
+      next: (response) => {
         this.successMessage = 'Registro exitoso. Redirigiendo al login...';
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000);
       },
-      (error) => {
+      error: (error) => {
         this.errorMessage = 'Error en el registro. Por favor, intente nuevamente';
       }
-    );
+    });
   }
 
   validateEmail(email: string): boolean {

@@ -24,8 +24,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Unit Tests
-        run: npm run test -- --watch=false --browsers=ChromeHeadless
+      - name: Run tests with coverage
+        run: npm test -- --code-coverage
           
       - name: SonarCloud scan
         uses: SonarSource/sonarqube-scan-action@v4

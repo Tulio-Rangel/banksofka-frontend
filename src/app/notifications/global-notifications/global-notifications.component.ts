@@ -9,7 +9,7 @@ import { TransactionStreamService } from '../transaction-stream.service';
 export class GlobalNotificationsComponent implements OnInit {
   transactions: any[] = [];
 
-  constructor(private transactionStreamService: TransactionStreamService) {}
+  constructor(private readonly transactionStreamService: TransactionStreamService) {}
 
   ngOnInit(): void {
     this.transactionStreamService.getTransactionStream().subscribe({

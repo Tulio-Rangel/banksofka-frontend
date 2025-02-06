@@ -15,7 +15,7 @@ export class LoginComponent {
   errorMessage: string = '';
   isLoading: boolean = false;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(private readonly apiService: ApiService, private readonly router: Router) { }
 
   onSubmit(form: NgForm): void {
     if (form.invalid) {
@@ -32,18 +32,18 @@ export class LoginComponent {
     this.errorMessage = '';  // Clear any previous error messages
 
     setTimeout(() => {
-      this.apiService.login(this.email, this.password).subscribe(
-        (response: AuthResponse) => {
+      this.apiService.login(this.email, this.password).subscribe({
+        next: (response: AuthResponse) => {
           localStorage.setItem('token', response.token);
           localStorage.setItem('user', JSON.stringify(response));
           this.isLoading = false;
           this.router.navigate(['/welcome']);
         },
-        (error) => {
+        error: () => {
           this.isLoading = false;
           this.errorMessage = 'Credenciales inválidas. Por favor, verifique sus datos';
         }
-      );
+      });
     }, 2000);
   }
 
