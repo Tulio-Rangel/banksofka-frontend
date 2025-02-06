@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://bankproject:8080',
-    reactiveApiUrl: 'http://bank-sofka-reactive:8081'
+    apiUrl: 'http://localhost:8080',
+    reactiveApiUrl: 'http://localhost:8081'
 };
