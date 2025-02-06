@@ -30,7 +30,7 @@ describe('ApiService', () => {
       expect(response).toEqual(mockResponse);
     });
 
-    const req = httpMock.expectOne('http://bankproject:8080/api/auth/login');
+    const req = httpMock.expectOne('http://localhost:8080/api/auth/login');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({ email: 'test@example.com', password: 'password123' });
     req.flush(mockResponse);
@@ -40,7 +40,7 @@ describe('ApiService', () => {
     const mockUser = { name: 'Test User', email: 'test@example.com', password: 'password123' };
     service.register(mockUser).subscribe();
 
-    const req = httpMock.expectOne('http://bankproject:8080/api/users');
+    const req = httpMock.expectOne('http://localhost:8080/api/users');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(mockUser);
     req.flush({});
@@ -50,7 +50,7 @@ describe('ApiService', () => {
     spyOn(localStorage, 'getItem').and.returnValue('fake-jwt-token');
     service.getUserAccounts(1).subscribe();
 
-    const req = httpMock.expectOne('http://bankproject:8080/api/users/1/accounts');
+    const req = httpMock.expectOne('http://localhost:8080/api/users/1/accounts');
     expect(req.request.headers.get('Authorization')).toBe('Bearer fake-jwt-token');
     req.flush([]);
   });
@@ -59,7 +59,7 @@ describe('ApiService', () => {
     spyOn(localStorage, 'getItem').and.returnValue('fake-jwt-token');
     service.getTransactionsHistory('12345').subscribe();
 
-    const req = httpMock.expectOne('http://bankproject:8080/api/accounts/12345/transactions');
+    const req = httpMock.expectOne('http://localhost:8080/api/accounts/12345/transactions');
     expect(req.request.method).toBe('GET');
     req.flush([]);
   });
@@ -68,7 +68,7 @@ describe('ApiService', () => {
     spyOn(localStorage, 'getItem').and.returnValue('fake-jwt-token');
     service.createDeposit('12345', 1000).subscribe();
 
-    const req = httpMock.expectOne('http://bankproject:8080/api/accounts/12345/deposit');
+    const req = httpMock.expectOne('http://localhost:8080/api/accounts/12345/deposit');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toBe(1000);
     req.flush({});
@@ -78,7 +78,7 @@ describe('ApiService', () => {
     spyOn(localStorage, 'getItem').and.returnValue('fake-jwt-token');
     service.createWithdrawal('12345', 500).subscribe();
 
-    const req = httpMock.expectOne('http://bankproject:8080/api/accounts/12345/withdrawal');
+    const req = httpMock.expectOne('http://localhost:8080/api/accounts/12345/withdrawal');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toBe(500);
     req.flush({});
