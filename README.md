@@ -64,43 +64,23 @@ El proyecto utiliza variables de entorno para configurar las URLs de las APIs. C
 - **API**: Comunicación RESTful con backend mediante HttpClient
 
 
-Pipeline de CI/CD
+## Pipeline de CI/CD
 El proyecto utiliza GitHub Actions para automatizar la construcción, pruebas y despliegue de la aplicación. El pipeline consta de dos jobs:
 
-1. Build
-Verifica el código.
+### 1. Build
+- Verifica el código.
+- Instala dependencias.
+- Ejecuta pruebas unitarias y genera un reporte de cobertura.
+- Realiza un análisis de código con SonarCloud.
 
-Instala dependencias.
+### 2. Publish
+- Construye y publica la imagen Docker en GitHub Container Registry.
+- Usa las variables de entorno BANK_API_URL y REACTIVE_API_URL para configurar las URLs de las APIs en producción.
 
-Ejecuta pruebas unitarias y genera un reporte de cobertura.
+### Secrets requeridos
+- SONAR_TOKEN: Token de SonarCloud para el análisis de código.
+- GHCR_TOKEN: Token de GitHub Container Registry para publicar la imagen.
+- BANK_API_URL: URL de la Bank API en producción.
+- REACTIVE_API_URL: URL de la Reactive API en producción.
 
-Realiza un análisis de código con SonarCloud.
-
-2. Publish
-Construye y publica la imagen Docker en GitHub Container Registry.
-
-Usa las variables de entorno BANK_API_URL y REACTIVE_API_URL para configurar las URLs de las APIs en producción.
-
-Secrets requeridos
-SONAR_TOKEN: Token de SonarCloud para el análisis de código.
-
-GHCR_TOKEN: Token de GitHub Container Registry para publicar la imagen.
-
-BANK_API_URL: URL de la Bank API en producción.
-
-REACTIVE_API_URL: URL de la Reactive API en producción.
-
-Estructura del proyecto
-src/: Contiene el código fuente de la aplicación Angular.
-
-app/: Módulos, componentes y servicios de la aplicación.
-
-environments/: Configuración de entornos (desarrollo y producción).
-
-Dockerfile: Archivo para construir la imagen Docker.
-
-.github/workflows/ci-cd.yml: Configuración del pipeline de CI/CD.
-
-package.json: Dependencias y scripts del proyecto.
-
-
+![crear-usuario](sonarcloud.PNG)
