@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
   private readonly apiUrl = `${environment.apiUrl}/api`;
+  private readonly authApiUrl = `${environment.authApiUrl}/api`;
 
   constructor(private readonly http: HttpClient) { }
 
@@ -23,16 +24,16 @@ export class ApiService {
   }
 
   login(email: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, { email, password });
+    return this.http.post<AuthResponse>(`${this.authApiUrl}/auth/login`, { email, password });
   }
 
   register(user: User): Observable<any> {
-    return this.http.post(`${this.apiUrl}/users`, user);
+    return this.http.post(`${this.authApiUrl}/users`, user);
   }
 
   getUserAccounts(userId: number): Observable<any> {
     const headers = this.getHeaders();
-    return this.http.get(`${this.apiUrl}/users/${userId}/accounts`, { headers });
+    return this.http.get(`${this.apiUrl}/users/${userId}`, { headers });
   }
 
   getTransactionsHistory(accountId: string): Observable<Transaction[]> {
